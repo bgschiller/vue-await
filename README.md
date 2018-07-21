@@ -17,11 +17,9 @@ Render blocks based on the status of a Promise.
 ### Prior Art
 
 - This project was inspired by [svelte](https://svelte.technology)'s [Await blocks](https://svelte.technology/guide#await-blocks).
-- It uses the custom directive structure from [this stack overflow answer](https://stackoverflow.com/a/43543814/1586229)
 
 ### Caveats
 
-- Promises that resolve or reject with multiple arguments will lose all but the first. If you need this, you can do `<Await :p="p.then((...args) => args)" />`
 - Because `slot`s cannot live at the root of a `template`, this component introduces one extra `div` of nesting. This has the potential to break some css rules using the `>` immediate child selector.
 
 ### Future Work
@@ -42,7 +40,7 @@ This would likely be better as a directive along the lines of `v-if`:
 
 This would require a patch to the Vue core library. I intend to look into this, but don't have time just now. Note to self: [check out here](https://forum.vuejs.org/t/i-want-to-learn-the-source-code-of-v-if/16645)
 
-### Test
+### Tests (todo)
 
 It promisify and then's even falsy objects.
 
