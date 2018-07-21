@@ -1,10 +1,14 @@
 {
   "name": "vue-await",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.0.0",
+  "description": "Render blocks based on the status of a Promise",
+  "main": "./dist/vue-await.common.js",
+  "unpkg": "./dist/vue-await.umd.min.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "npm run build:demo && npm run build:bundle",
+    "build:demo": "vue-cli-service build",
+    "build:bundle": "vue-cli-service build --target lib --name vue-await ./src/Await.vue",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },
@@ -34,5 +38,12 @@
       "vue-cli-service lint",
       "git add"
     ]
-  }
+  },
+  "files": [
+    "dist/*",
+    "src/*",
+    "public/*",
+    "*.json",
+    "*.js"
+  ]
 }
