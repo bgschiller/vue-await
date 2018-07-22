@@ -1,17 +1,23 @@
 # vue-await
 
-Render blocks based on the status of a Promise.
+Render blocks based on the status of a Promise. See a [demo](https://brianschiller.com/vue-await/).
 
 ```
 <Await :p="todosPromise">
   <p>loading...</p>
-  <div slot="then" slot-scope="todos">
+  <div slot="then" slot-scope="[todos]">
     <TodoList :todos="todos" />
   </div>
-  <p slot="catch" slot-scope="error">
-    Uh oh, something went wrong: {{error}}
+  <p slot="catch" slot-scope="[error]">
+    Uh oh, something went wrong: {{ error }}
   </p>
 </Await>
+```
+
+### Installation
+
+```
+npm install --save vue-await
 ```
 
 ### Prior Art
@@ -21,6 +27,7 @@ Render blocks based on the status of a Promise.
 ### Caveats
 
 - Because `slot`s cannot live at the root of a `template`, this component introduces one extra `div` of nesting. This has the potential to break some css rules using the `>` immediate child selector.
+- Promises can resolve and reject with multiple arguments, so the `slot-scope` value for `slot="then"` and `slot="catch"` will always be an array. You can destructure it with `slot-scope="[result]"` if you like.
 
 ### Future Work
 
@@ -30,31 +37,15 @@ This would likely be better as a directive along the lines of `v-if`:
 <div v-await="todosPromise">
     <p>loading...</p>
 </div>
-<div v-then="answer">
+<div v-then="todos">
     <TodoList :data="todos" />
 </div>
 <div v-catch="error">
-    <p>Uh oh, something went wrong: {error}</p>
+    <p>Uh oh, something went wrong: {{ error }}</p>
 </div>
 ```
 
 This would require a patch to the Vue core library. I intend to look into this, but don't have time just now. Note to self: [check out here](https://forum.vuejs.org/t/i-want-to-learn-the-source-code-of-v-if/16645)
-
-### Tests (todo)
-
-It promisify and then's even falsy objects.
-
-It renders awaiting promise slots
-
-It renders failed promise slots
-
-it renders success promise slots
-
-it lifts non-promises
-
-it lifts even falsy non-thenables
-
-it lifts errors, and renders catch
 
 ## Project setup
 ```
