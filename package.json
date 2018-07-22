@@ -1,6 +1,6 @@
 {
   "name": "vue-await",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "npm run build:demo; rm -rf ./docs; cp -R ./dist ./docs; npm run build:bundle",
