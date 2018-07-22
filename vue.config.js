@@ -1,3 +1,6 @@
 module.exports = {
-  baseUrl: "/vue-await/"
+  baseUrl: "/vue-await/",
+  configureWebpack: {
+    devtool: "source-map"
+  }
 };
