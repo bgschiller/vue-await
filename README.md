@@ -3,15 +3,24 @@
 Render blocks based on the status of a Promise. See a [demo](https://brianschiller.com/vue-await/).
 
 ```
-<Await :p="todosPromise">
-  <p>loading...</p>
-  <div slot="then" slot-scope="[todos]">
-    <TodoList :todos="todos" />
-  </div>
-  <p slot="catch" slot-scope="[error]">
-    Uh oh, something went wrong: {{ error }}
-  </p>
-</Await>
+<template>
+  <Await :p="prom">
+    <p>Waiting...</p>
+    <p slot="then" slot-scope="[result]">Success: {{result}}</p>
+    <p slot="catch" slot-scope="[error]">Error: {{error}}</p>
+    <p slot="none">(promise is null)</p>
+  </Await>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      prom: fetch('http://thecatapi.com/api/images/get'),
+    };
+  },
+}
+</script>
 ```
 
 ### Installation
