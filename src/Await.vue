@@ -46,9 +46,6 @@ export default {
     }
   },
   watch: {
-    status(newVal, oldVal) {
-      console.log("status changed from", oldVal, "to", newVal);
-    },
     p: {
       immediate: true,
       handler: function() {
@@ -59,7 +56,6 @@ export default {
           this.err = null;
         } else {
           this.status = "awaiting";
-          console.log("about to then and catch prom", prom);
           prom
             .then((...v) => {
               this.status = "success";
@@ -69,7 +65,6 @@ export default {
               this.status = "error";
               this.err = e;
             });
-          console.log("finished with then and catch prom");
         }
       }
     }
