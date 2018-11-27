@@ -29,6 +29,8 @@
   "main": "./dist/vue-await.common.js",
   "unpkg": "./dist/vue-await.umd.min.js",
   "description": "Render blocks based on the status of a Promise",
+  "repository": "https://github.com/bgschiller/vue-await",
+  "homepage": "https://brianschiller.com/vue-await/",
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
